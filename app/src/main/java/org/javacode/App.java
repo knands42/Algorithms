@@ -5,12 +5,13 @@ package org.javacode;
 
 import org.javacode.patterns.prefixsum.ContiguousArray;
 
+import java.util.concurrent.Executors;
+
 public class App {
     public String getGreeting() {
         return "Hello World!";
     }
 
     public static void main(String[] args) {
-        ContiguousArray.findMaxLength(new int[]{0,0,0,1,1,0,0,1,0});
     }
 }
