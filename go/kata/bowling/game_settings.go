@@ -32,20 +32,26 @@ func NewGameSettings(players ...Player) *GameSettings {
 	}
 }
 
-func (gs *GameSettings) Play() *GameSettings {
+func (gs *GameSettings) Play() {
 	if gs.IsGameFinished() {
 		log.Println("Game finished")
-		return gs
+		return
 	}
 
 	gs.rollUntilFinish(10)
+	gs.game = NewBowlingGame()
 	for !gs.isAnyRemainingPlayer() {
 		gs.GetNextPlayer()
 		gs.rollUntilFinish(10)
 	}
 
+	gs.prepareAnotherFrame()
 	gs.frames -= 1
-	return gs
+}
+
+func (gs *GameSettings) prepareAnotherFrame() {
+	gs.currentPlayer = 0
+	gs.game = NewBowlingGame()
 }
 
 func (gs *GameSettings) GetNextPlayer() Player {
@@ -77,8 +83,11 @@ func (gs *GameSettings) rollUntilFinish(pinsRemaining int) int {
 		gs.game.Roll(pinsTakeDown)
 
 		if isFinished, result := gs.game.GameResult(); isFinished {
-			gs.playerScore[currPlayer.Id] = result
-			gs.game = NewBowlingGame()
+			if _, ok := gs.playerScore[currPlayer.Id]; !ok {
+				gs.playerScore[currPlayer.Id] = result
+			} else {
+				gs.playerScore[currPlayer.Id] += result
+			}
 			return result
 		} else {
 			return gs.rollUntilFinish(pinsRemaining - pinsTakeDown)
