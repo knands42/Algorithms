@@ -1,3 +1,6 @@
+from typing import Optional
+
+
 class ArrayManipulation:
     @staticmethod
     def rotate_array(arr: list[int], k: int) -> None:
@@ -14,7 +17,7 @@ class ArrayManipulation:
         reverse(arr, k, len(arr) - 1)
 
     @staticmethod
-    def find_missing_number_in_a_consecutive_array(nums: list[int]) -> int:
+    def find_missing_number_in_a_consecutive_array(nums: list[int]) -> Optional[int, None]:
         for i in range(1, len(nums)):
             value_to_look_for = arr[i - 1] + 1
             if (value_to_look_for is not nums[i]):
