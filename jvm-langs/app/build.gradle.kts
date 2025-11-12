@@ -13,6 +13,7 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
     implementation(libs.guava)
+    implementation(libs.kotlinx.coroutine)
     implementation(kotlin("stdlib-jdk8"))
 }
 

@@ -3,10 +3,6 @@
  */
 package org.javacode;
 
-import org.javacode.patterns.prefixsum.ContiguousArray;
-
-import java.util.concurrent.Executors;
-
 public class App {
     public String getGreeting() {
         return "Hello World!";

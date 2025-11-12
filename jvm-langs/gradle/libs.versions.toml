@@ -4,7 +4,9 @@
 [versions]
 guava = "33.3.1-jre"
 junit-jupiter = "5.11.1"
+kotlin-coroutine = "1.10.2"
 
 [libraries]
 guava = { module = "com.google.guava:guava", version.ref = "guava" }
+kotlinx-coroutine = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlin-coroutine" }
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit-jupiter" }

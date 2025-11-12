@@ -1,5 +1,6 @@
 package org.javacode.basics;
 
+import org.javacode.algorithms.basics.ArrayManipulation;
 import org.junit.jupiter.api.Test;
 
 import java.util.Optional;

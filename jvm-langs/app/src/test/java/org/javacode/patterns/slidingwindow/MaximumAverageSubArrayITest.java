@@ -1,5 +1,6 @@
 package org.javacode.patterns.slidingwindow;
 
+import org.javacode.algorithms.slidingwindow.MaximumAverageSubArrayI;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
