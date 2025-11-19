@@ -1,4 +1,4 @@
-package org.kotlincode.patterns.sorting
+package org.kotlincode.algorithms.sorting
 
 object MergeSort {
 

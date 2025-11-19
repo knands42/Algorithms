@@ -1,5 +1,4 @@
-
-package org.kotlincode.patterns.twopointers
+package org.kotlincode.algorithms.twopointers
 
 object TwoSum {
     fun execute(

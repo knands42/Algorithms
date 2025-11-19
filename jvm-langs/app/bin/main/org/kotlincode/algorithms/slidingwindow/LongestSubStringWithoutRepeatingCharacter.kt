@@ -1,4 +1,4 @@
-package org.kotlincode.patterns.slidingwindow
+package org.kotlincode.algorithms.slidingwindow
 
 import kotlin.math.max
 

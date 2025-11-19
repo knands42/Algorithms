@@ -1,4 +1,4 @@
-package org.kotlincode.patterns.topKelements
+package org.kotlincode.algorithms.topKelements
 
 import java.util.PriorityQueue
 

@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 
-class StringManipulation {
+public class StringManipulation {
 
     public static String reverseString(String str) {
         StringBuilder sb = new StringBuilder(str);

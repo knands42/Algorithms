@@ -1,4 +1,4 @@
-package org.kotlincode.patterns.topKelements
+package org.kotlincode.algorithms.topKelements
 
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.*

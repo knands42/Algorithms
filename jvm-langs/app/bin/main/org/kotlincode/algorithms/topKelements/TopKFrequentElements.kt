@@ -1,6 +1,7 @@
-package org.kotlincode.patterns.topKelements
+package org.kotlincode.algorithms.topKelements
 
 import java.util.*
+import kotlin.collections.iterator
 
 object TopKFrequentElements {
 

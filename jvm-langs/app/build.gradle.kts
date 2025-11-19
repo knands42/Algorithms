@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     application
     kotlin("jvm")
@@ -5,6 +7,28 @@ plugins {
 
 repositories {
     mavenCentral()
+}
+
+tasks.withType<KotlinCompile> {
+    compilerOptions {
+        freeCompilerArgs.add("-opt-in=kotlin.concurrent.atomics.ExperimentalAtomicApi")
+    }
+}
+
+kotlin {
+    sourceSets.all {
+        languageSettings.optIn("kotlin.concurrent.atomics.ExperimentalAtomicApi")
+    }
+}
+
+kotlin {
+    sourceSets {
+        getByName("main") {
+            kotlin {
+                exclude("**/org/kotlincode/exercises/**")
+            }
+        }
+    }
 }
 
 dependencies {

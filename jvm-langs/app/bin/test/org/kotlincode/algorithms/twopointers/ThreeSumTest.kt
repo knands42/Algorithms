@@ -1,4 +1,4 @@
-package org.kotlincode.patterns.twopointers
+package org.kotlincode.algorithms.twopointers
 
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.*
