@@ -1,13 +1,21 @@
 package org.javacode.algorithms.greedy;
 
+import java.util.ArrayList;
+
 public class FractionalKnapsackSimulator {
+
+    public record Item(int value, int weight, double ratio) {
+        public Item(int value, int weight) {
+            this(value, weight, (double) value / weight);
+        }
+    }
 
     double execute(int[] values, int[] weights, int totalCapacity) {
         if (values.length != weights.length) {
             return -1;
         }
 
-        double[] ratios = getRation(values, weights);
+        ArrayList<Item> ratios = getItemsWithRatio(values, weights);
 
         int currCapacity = 0;
         double totalValue = 0;
@@ -28,58 +36,57 @@ public class FractionalKnapsackSimulator {
         return totalValue;
     }
 
-    private double[] getRation(int[] values, int[] weights) {
-        double[] ratios = new double[values.length];
+    private ArrayList<Item> getItemsWithRatio(int[] values, int[] weights) {
+        ArrayList<Item> items = new ArrayList<>();
 
         for  (int i = 0; i <= values.length - 1; i++) {
-            double ratio = values[i] / weights[i];
-            ratios[i] = ratio;
+            Item newItem = new Item(values[i], weights[i]);
+            items.add(newItem);
         }
 
-        return sortRatios(ratios);
+        return sortRatios(items);
     }
 
-    private double[] sortRatios(double[] ratios) {
-        if (ratios.length < 2) {
+    private ArrayList<Item> sortRatios(ArrayList<Item> ratios) {
+        if (ratios.size() < 2) {
             return ratios;
         }
 
-        int mid = ratios.length / 2;
+        int mid = ratios.size() / 2;
 
-        double[] left = new double[mid];
-        double[] right = new double[ratios.length - mid];
+        ArrayList<Item> left = new ArrayList<>(mid);
+        ArrayList<Item> right = new ArrayList<>(ratios.size() - mid);
 
         for (int i = 0; i < mid; i++) {
-            left[i] = ratios[i];
+            left.add(ratios.get(i));
         }
 
-        for (int i = mid; i < ratios.length; i++) {
-            right[i - mid] = ratios[i];
+        for (int i = mid; i < ratios.size(); i++) {
+            right.add(ratios.get(i));
         }
 
         return mergeRatios(ratios, sortRatios(left), sortRatios(right));
     }
 
-    private double[] mergeRatios(double[] resultArr, double[] leftArr, double[] rightArr) {
-        int leftIndex = 0, rightIndex = 0, currentIndexIterator = 0;
+    private ArrayList<Item> mergeRatios(ArrayList<Item> resultArr, ArrayList<Item> leftArr, ArrayList<Item> rightArr) {
+        int leftIndex = 0, rightIndex = 0;
 
-        while (leftIndex < leftArr.length && rightIndex < rightArr.length) {
-            if (leftArr[leftIndex] >= rightArr[rightIndex]) {
-                resultArr[currentIndexIterator++] = leftArr[leftIndex++];
+        while (leftIndex < leftArr.size() && rightIndex < rightArr.size()) {
+            if (leftArr.get(leftIndex).ratio >= rightArr.get(rightIndex).ratio) {
+                resultArr.add(leftArr.get(leftIndex++));
             } else {
-                resultArr[currentIndexIterator++] = rightArr[rightIndex++];
+                resultArr.add(rightArr.get(rightIndex++));
             }
         }
 
-        while (leftIndex < leftArr.length) {
-            resultArr[currentIndexIterator++] = leftArr[leftIndex++];
+        while (leftIndex < leftArr.size()) {
+            resultArr.add(leftArr.get(leftIndex++));
         }
 
-        while (rightIndex < rightArr.length) {
-            resultArr[currentIndexIterator++] = rightArr[rightIndex++];
+        while (rightIndex < rightArr.size()) {
+            resultArr.add(rightArr.get(rightIndex++));
         }
 
         return resultArr;
     }
-
 }
