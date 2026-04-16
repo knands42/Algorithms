@@ -1,0 +1,17 @@
+[package]
+name = "rust-deep-dive"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "rust_deep_dive"
+path = "src/lib.rs"
+
+# No external dependencies — all exercises use std only.
+# Uncomment when working through async exercises:
+# [dependencies]
+# tokio = { version = "1", features = ["full"] }
+
+[dev-dependencies]
+# Uncomment for benchmarking (iterator exercise):
+# criterion = { version = "0.5", features = ["html_reports"] }
