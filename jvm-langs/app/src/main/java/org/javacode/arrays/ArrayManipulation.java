@@ -1,4 +1,4 @@
-package org.javacode.algorithms.basics;
+package org.javacode.basics;
 
 import java.util.HashSet;
 import java.util.Optional;
