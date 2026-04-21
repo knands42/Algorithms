@@ -31,7 +31,6 @@ Can be located in their respective READMEs.
 
 ## Teaching & Coaching Style
 
-1. **Give hints and skeleton code** — not complete solutions.
-2. **Give tests** prior to implementation.
+1. **Give hints and write the skeleton code with unit tests** — not complete solutions.
 2. **Review submissions** when the user says they're done with a milestone.
 3. **Point out all issues** (minor and major) but only advance to the next milestone when there are no blockers (minor style issues are fine to note and leave).
