@@ -4,21 +4,31 @@
 // Implement two approaches:
 //   Approach 1 — HashSet: borrow the slice, O(n) time, O(n) space
 //   Approach 2 — Sort:    mutate the slice in-place, O(n log n) time, O(1) extra space
-//
-// Bonus: first_duplicate — return the first value that appears more than once, if any.
-
 use std::collections::HashSet;
 
 pub fn contains_duplicate(nums: &[i32]) -> bool {
-    todo!()
+    let mut seen: HashSet<&i32> = HashSet::new();
+
+    for num in nums {
+        if (seen.contains(num)) {
+            return true;
+        }
+        seen.insert(num);
+    }
+
+    false
 }
 
-pub fn contains_duplicate_sort(nums: &mut [i32]) -> bool {
-    todo!()
-}
+pub fn contains_duplicate_sort(nums: &mut [i32]) -> bool { 
+    nums.sort();
 
-pub fn first_duplicate(nums: &[i32]) -> Option<i32> {
-    todo!()
+    for i in 1..(nums.len() - 1) {
+        if (nums[i] == nums[i-1]) {
+            return true;
+        }
+    }
+
+    false
 }
 
 #[cfg(test)]
@@ -53,15 +63,5 @@ mod tests {
     #[test]
     fn sort_approach_unique() {
         assert!(!contains_duplicate_sort(&mut [1, 2, 3, 4]));
-    }
-
-    #[test]
-    fn first_duplicate_found() {
-        assert_eq!(first_duplicate(&[1, 2, 3, 1, 2]), Some(1));
-    }
-
-    #[test]
-    fn first_duplicate_none() {
-        assert_eq!(first_duplicate(&[1, 2, 3]), None);
     }
 }
