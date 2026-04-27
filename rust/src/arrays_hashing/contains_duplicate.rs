@@ -10,7 +10,7 @@ pub fn contains_duplicate(nums: &[i32]) -> bool {
     let mut seen: HashSet<&i32> = HashSet::new();
 
     for num in nums {
-        if (seen.contains(num)) {
+        if seen.contains(num) {
             return true;
         }
         seen.insert(num);
@@ -19,11 +19,11 @@ pub fn contains_duplicate(nums: &[i32]) -> bool {
     false
 }
 
-pub fn contains_duplicate_sort(nums: &mut [i32]) -> bool { 
+pub fn contains_duplicate_sort(nums: &mut [i32]) -> bool {
     nums.sort();
 
     for i in 1..(nums.len() - 1) {
-        if (nums[i] == nums[i-1]) {
+        if nums[i] == nums[i - 1] {
             return true;
         }
     }
